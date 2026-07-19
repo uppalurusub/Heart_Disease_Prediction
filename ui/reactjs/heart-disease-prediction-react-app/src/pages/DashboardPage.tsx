@@ -1,0 +1,1 @@
+import {heartApi} from "../api/heartApi"; import {useApi} from "../hooks/useApi"; import {ResponseView} from "../components/common/ResponseView"; export const DashboardPage=()=>{const {data,loading,error}=useApi(heartApi.dashboard); return <><h1>Heart Disease Dashboard</h1>{loading&&<p>Loading...</p>}{error&&<p className="error">{error}</p>}<ResponseView data={data}/></>};

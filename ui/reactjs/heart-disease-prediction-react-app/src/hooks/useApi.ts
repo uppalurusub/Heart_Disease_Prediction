@@ -1,0 +1,1 @@
+import {useEffect,useState} from "react"; export function useApi<T>(loader:()=>Promise<T>){const [data,setData]=useState<T|null>(null),[loading,setLoading]=useState(true),[error,setError]=useState(""); useEffect(()=>{setLoading(true);loader().then(setData).catch(e=>setError(e?.message??"Request failed")).finally(()=>setLoading(false));},[]); return {data,loading,error};}
