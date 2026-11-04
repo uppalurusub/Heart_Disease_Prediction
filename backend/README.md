@@ -277,7 +277,7 @@ http://127.0.0.1:8000/redoc
     "chol": 250,
     "fbs": 0,
     "restecg": 1,
-    "thalach": 150,
+    "thalch": 150,
     "exang": 0,
     "oldpeak": 1.2,
     "slope": 1,

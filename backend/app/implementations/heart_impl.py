@@ -5,22 +5,22 @@ import pandas as pd
 import numpy as np
 
 from datetime import datetime
-
+from app.models.train_model import data_file,artifact_preprocessor,artifact_features,artifact_model
 
 class HeartImplementation:
 
     def __init__(self):
 
         self.model = joblib.load(
-            "../models/heart_model.pkl"
+            artifact_model
         )
 
         self.preprocessor = joblib.load(
-            "../models/preprocessor.pkl" 
+            artifact_preprocessor 
         )
 
         self.feature_importance = joblib.load(
-            "../models/feature_importance.pkl"
+            artifact_features
         )
 
     # =====================================================

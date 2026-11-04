@@ -1,6 +1,6 @@
 # app/services/heart_service.py
 
-from implementations.heart_impl import (
+from app.implementations.heart_impl import (
     HeartImplementation
 )
 

@@ -3,7 +3,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers.heart_router import (
+from app.routers.heart_router import (
     router as heart_router
 )
 

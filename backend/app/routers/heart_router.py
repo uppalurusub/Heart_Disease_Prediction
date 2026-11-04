@@ -2,11 +2,11 @@
 
 from fastapi import APIRouter
 
-from services.heart_service import (
+from app.services.heart_service import (
     HeartService
 )
 
-from schemas.prediction_request import (
+from app.schemas.prediction_request import (
     HeartPredictionRequest
 )
 

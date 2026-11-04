@@ -15,9 +15,18 @@ from sklearn.metrics import (
     confusion_matrix
 )
 
-from utils.preprocessing import (
+from app.utils.preprocessing import (
     HeartDataPreprocessor
 )
+
+from app.config.settings import settings
+data_dir = settings.data_dir
+artifact_dir = settings.artifact_dir
+
+data_file = data_dir / "heart_disease.csv"
+artifact_model = artifact_dir / "heart_model.pkl"
+artifact_preprocessor = artifact_dir / "preprocessor.pkl"
+artifact_features = artifact_dir / "feature_importance.pkl"
 
 # =====================================================
 # Training Class
@@ -36,10 +45,7 @@ class HeartDiseaseModelTrainer:
             n_jobs=-1
         )
 
-        os.makedirs(
-            "models",
-            exist_ok=True
-        )
+        
 
     # =====================================================
     # Load Dataset
@@ -48,7 +54,7 @@ class HeartDiseaseModelTrainer:
     def load_dataset(self):
 
         df = self.preprocessor.load_data(
-            "data/heart_disease.csv"
+            data_file
         )
 
         print(f"Dataset Shape: {df.shape}")
@@ -224,21 +230,21 @@ class HeartDiseaseModelTrainer:
         # Save Model
         joblib.dump(
             self.model,
-            "models/heart_model.pkl"
+            artifact_model
         )
 
         print(
-            "\nSaved: models/heart_model.pkl"
+            "\nSaved Model"
         )
 
         # Save Preprocessor
         joblib.dump(
             self.preprocessor.preprocessor,
-            "models/preprocessor.pkl"
+            artifact_preprocessor
         )
 
         print(
-            "Saved: models/preprocessor.pkl"
+            "Saved preprocessor model"
         )
 
         feature_names = (
@@ -269,11 +275,11 @@ class HeartDiseaseModelTrainer:
             feature_importance.to_dict(
                 orient="records"
             ),
-            "models/feature_importance.pkl"
+            artifact_features
         )
 
         print(
-            "Saved: models/feature_importance.pkl"
+            "Saved: features model"
         )
 
         print("\nTop Features")
